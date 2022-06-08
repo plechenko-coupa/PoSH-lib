@@ -97,6 +97,12 @@ function Invoke-RedisCommand {
     while ( $RespStream.DataAvailable ) {
       $RespData = $RespStream.Read( $RespBuffer, 0, 1024 )
       $RespResponse += $Encoding.GetString( $RespBuffer, 0, $RespData )
+
+      # Workaround for slow/unstable connections
+      $tryCounter = 10
+      do {
+        Start-Sleep -m 1
+      } until ( $RespStream.DataAvailable -or $tryCounter-- -eq 0)      
     }
 
     if ($RespResponse -ne '') {
