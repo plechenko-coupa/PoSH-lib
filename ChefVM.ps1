@@ -45,7 +45,7 @@ function Set-ChefVM {
       $ChefConfigDir.Delete()
     }
     else {
-      Write-Warning "$ChefConfigDir is not a symlink. Please delete or rename it an re-run the command."
+      Write-Warning "$ChefConfigDir is not a symlink. Please delete or rename it and then re-run the command `Set-ChefVM -ChefVMConfigName $ChefVMConfigName`."
     }
   }
   if (-not(Test-Path $ChefDir)) {
