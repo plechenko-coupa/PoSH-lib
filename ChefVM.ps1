@@ -49,7 +49,7 @@ function Set-ChefVM {
     }
   }
   if (-not(Test-Path $ChefDir)) {
-    & cmd.exe /c mklink /D "$ChefDir" "$ChefVMDir\configurations\$ChefVMConfigName"
+    & cmd.exe /c mklink /D "$ChefDir" "$ChefVMDir\$ChefVMConfigName"
   }
 
 }
